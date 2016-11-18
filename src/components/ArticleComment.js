@@ -10,11 +10,11 @@ class ArticleComment extends Component {
 		console.log(comment.text);
 
 		 return (
-		 	<section>
+		 	<div>
                 <p>Comment for user: <strong>{comment.user}</strong></p>
                 <p>Text comment: {comment.text}</p>
                 <hr/> 
-            </section>
+            </div>
 
         )
 	}

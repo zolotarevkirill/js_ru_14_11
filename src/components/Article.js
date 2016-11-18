@@ -14,11 +14,10 @@ class Article extends Component {
     render() {
         const { article } = this.props
 
-        //Проверяем есть ли свойство comments
-        const comments  =  typeof article.comments != "undefined" ? article.comments : null;
+
 
         // Если свойства нет оно равно NULL если есть до делаем мап объектов и передаем компоненту по 1 объекту формируя уникальный ID
-        const comment = comments != null ? comments.map(comment =>  <div key = {article.id+'_'+comment.id}><ArticleComment comment = {comment} /></div>) : null
+        const comment = !!article.comments ? article.comments.map(comment =>  <div key = {article.id+'_'+comment.id}><ArticleComment comment = {comment} /></div>) : null
 
         //Если комментов нет (NULL) не показываем ссылку.
         const linkComment = comment ? <a href="#" onClick = {this.handleClickComment}>Комментарии</a>  : null
@@ -26,18 +25,18 @@ class Article extends Component {
 
         //Обработчики состояний
         const bodyComment = this.state.isComment ? <section>{comment}</section> : null
-        const body = this.state.isOpen ? <p>{article.text} <div><br/>{linkComment}{bodyComment}</div></p> : null
+        const body = this.state.isOpen ? <div>{article.text} <div><br/>{linkComment}{bodyComment}</div></div> : null
        
 
        
 
 
         return (
-            <section>
+            <div>
                 <h3 onClick = {this.handleClick}>{article.title}</h3>
                 {body}
                     
-            </section>
+            </div>
         )
     }
 
