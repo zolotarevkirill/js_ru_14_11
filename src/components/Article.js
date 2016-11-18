@@ -27,10 +27,6 @@ class Article extends Component {
         const bodyComment = this.state.isComment ? <section>{comment}</section> : null
         const body = this.state.isOpen ? <div>{article.text} <div><br/>{linkComment}{bodyComment}</div></div> : null
        
-
-       
-
-
         return (
             <div>
                 <h3 onClick = {this.handleClick}>{article.title}</h3>
