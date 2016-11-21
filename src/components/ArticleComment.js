@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Article from './Article'
 
 
-
+//Лучше использовать Functional Component для таких компонентов
 class ArticleComment extends Component {
 
 	render() {
