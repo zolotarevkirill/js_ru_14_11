@@ -7,6 +7,7 @@ class Article extends Component {
         super()
         this.state = {
             isOpen: false,
+            //Так вызодят очень перегруженные компоненты, вынеси этот стейт в отдельный компонент, скажем CommentList
             isComment: false
         }
     }
@@ -15,6 +16,7 @@ class Article extends Component {
         const { article } = this.props
 
         // Если свойства нет оно равно FALSE если есть (TRUE) до делаем мап объектов и передаем компоненту по 1 объекту формируя уникальный ID
+        //достаточно comment.id в key
         const comment = !!article.comments ? article.comments.map(comment =>  
             <div key = {article.id+'_'+comment.id}>
                 <ArticleComment comment = {comment} /></div>) : null
