@@ -12,6 +12,7 @@ class App extends Component {
     };
 
     state = {
+        //внеси сюда selectedDay, что б сразу было понятно что у тебя в state живет
         selected: null,
     }
 
@@ -35,7 +36,7 @@ class App extends Component {
     }
 
     handleChange = selected => this.setState({ selected })
-
+    //я так понимаю, это просто мусор остался?
     handleDayClick(e, day, { selected, disabled }) {
     if (disabled) {
       return;
