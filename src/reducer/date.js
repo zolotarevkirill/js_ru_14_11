@@ -4,7 +4,7 @@ const initialState = {
   from: null,
   to: null
 }
-
+//объедени эти 2 редюсера в один
 export default (state = initialState, action) => {
   const { type, payload } = action
 
