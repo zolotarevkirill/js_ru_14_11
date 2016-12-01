@@ -7,6 +7,7 @@ export default (articlesState = articles, action) => {
     switch (type) {
         case DELETE_ARTICLE:
             return articlesState.filter(article => article.id != payload.articleId)
+//это дополнительная сложность + потенциальная неконсистентность. лучше проводить фильтрацию по месту использования
         case SET_DATE_FILTER:
             const { from, to } = payload
 
