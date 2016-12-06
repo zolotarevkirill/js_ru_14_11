@@ -39,14 +39,18 @@ class CommentList extends Component {
 
 
     getButton() {
-        const { comments, isOpen, toggleOpen } = this.props
+        const { comments, articleId, isOpen, toggleOpen } = this.props
         if ( !comments.length) return <span>No comments yet</span>
         return <h3 onClick = {toggleOpen}>{isOpen ? 'hide' : 'show'} comments</h3>
     }
 
     getBody() {
-        const { comments, isOpen } = this.props
-        const commentForm = <NewCommentForm />
+        const { comments, articleId, isOpen } = this.props
+
+        console.log(articleId);
+
+
+        const commentForm = <NewCommentForm articleId = {articleId}/>
         if (!isOpen || !comments.length) return <div>{commentForm}</div>
         const commentItems = comments.map(comment => <li key = {comment.id}><Comment comment = {comment} /></li>)
         return <div><ul>{commentItems}</ul>{commentForm}</div>
@@ -56,5 +60,6 @@ class CommentList extends Component {
 export default connect((state, props) => ({
 
     comments: props.commentIds.map(id => state.comments.get(id))
+   
     
 }))(toggleOpen(CommentList))

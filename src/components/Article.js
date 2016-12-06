@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 class Article extends Component {
 
-/*
+/* 
     shouldComponentUpdate(nextProps) {
         return nextProps.isOpen != this.props.isOpen
     }
@@ -34,11 +34,14 @@ class Article extends Component {
 
     getBody() {
         const { article, isOpen } = this.props
+
+
+
         if (!isOpen) return null
         return (
             <div>
                 <p>{article.text}</p>
-                <CommentList commentIds = {article.comments} ref = "comments" />
+                <CommentList commentIds = {article.comments} articleId = {article.id}  ref = "comments" />
             </div>
         )
     }

@@ -58,35 +58,30 @@ class ArticleList extends Component {
 }
 
 export default connect((state) => {
-    //const { articles, filters } = state
-    const { articles  } = state
-    //const selected = filters.selected
-    //const { from, to } = filters.dateRange
+    const { articles, filters } = state
+    //const { articles  } = state
+    const selected = filters.selected
+    const { from, to } = filters.dateRange
 
     const articlesArray = articles.valueSeq().toArray();
 
 
 
-
+    
    
 
-    //console.log(articles.valueSeq().toArray());
-    // let ctn = 0;
-    // for (let key in articles) {
-    //     articlesArray[ctn] = articles[key];
-    //     console.log(articles[key].id);
-    //     ctn++;
-    // }
+    const filteredArticles = articlesArray.filter(article => {
+        const published = Date.parse(article.date);
 
-    //console.log('S_NEW',articlesArray)
 
-    // const filteredArticles = articles.filter(article => {
-    //     const published = Date.parse(article.date)
-    //     return (!selected.length || selected.includes(article.id)) &&
-    //         (!from || !to || (published > from && published < to))
-    // })
+
+        return (!selected.length || selected.includes(article.id))  &&
+                (!from || to || (published > from && published < to))
+    })
+
+
 
     return {
-        articles: articlesArray
+        articles: filteredArticles
     }
 })(accordion(ArticleList))

@@ -8,7 +8,6 @@ export function changeDateRange(dateRange) {
 }
 
 export function changeSelection(selected) {
-	console.log('AC-filter')
     return {
         type: CHANGE_SELECTION,
         payload: { selected }

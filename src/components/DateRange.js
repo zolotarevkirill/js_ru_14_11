@@ -27,8 +27,14 @@ class DateRange extends Component {
         );
     }
 
+
+
+
 }
 
 export default connect(state => ({
+
     range: state.filters.dateRange
+
+
 }), { changeDateRange })(DateRange)

@@ -9,7 +9,7 @@ class Filter extends Component {
     render() {
         return (
             <div>
-                //DateRange
+                <DateRange />
                 <SelectFilter />
             </div>
         )

@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+import React, {Component, PropTypes } from 'react'
 
 function Comment(props) {
-    const { title, text, user } = props.comment
-    const header = title && <h4>{title}</h4>
+    const { title, text, user } = props.comment;
+    const header = title && <h4>{title}</h4>;
     return (
         <div>
             {header}
@@ -11,8 +11,13 @@ function Comment(props) {
     )
 }
 
+
 Comment.propTypes = {
-    comment: PropTypes.object.isRequired
-}
+    comment: PropTypes.shape({
+        title:PropTypes.string,
+        text: PropTypes.string,
+        user:PropTypes.string
+    }).isRequired
+};
 
 export default Comment

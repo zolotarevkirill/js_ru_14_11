@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import { addComment } from '../AC/comment'
+import { connect } from 'react-redux'
 
 class NewCommentForm extends Component {
     state = {
@@ -14,23 +16,40 @@ class NewCommentForm extends Component {
     }
 
     handleSubmit = ev => {
+        const { addComment, articleId } = this.props
+
+
         ev.preventDefault()
-        console.log('---', 'adding comment')
+
+        addComment({
+            user: this.state.user,
+            text: this.state.text
+        }, articleId)
+
         this.setState({
             user: '',
             text: ''
         })
+
+
+        
     }
+
+
 
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
                 comment: <input type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
                 user: <input type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
+                <input type="hidden"  value={this.props.articleId} />
                 <input type = "submit"/>
             </form>
         )
     }
 }
 
-export default NewCommentForm
+
+export default connect(null,{
+    addComment
+})(NewCommentForm)
