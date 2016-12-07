@@ -23,7 +23,7 @@ export default (comments = defaultComments, action) => {
          	console.log('333',payload)
          	console.log('444',randomId)
          	console.log('777777777',normalizedComments);
-
+		//тут не defaultComments, а просто comments
          	const NewCommnts = defaultComments.setIn([randomId],{
          		id: randomId,
 				text: payload.text,
