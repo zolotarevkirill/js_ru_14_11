@@ -65,6 +65,7 @@ class CommentList extends Component {
 
 export default connect((state, props) => {
     const {comments} = state
+    // >0 не гарантирует, что эти все комменты есть. Может ты где-то в другом месте часть загрузил
     const filteredComments = comments.entities.size > 0 ? (props.article.comments || []).map(id => comments.entities.get(id)) : []
 
     return {
