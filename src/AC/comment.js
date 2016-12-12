@@ -5,6 +5,7 @@ export function callApiForComments(articleId) {
     return {
         type: LOAD_ALL_COMMENTS,
         payload: articleId,
+        //лучше было загружать комменты для конкретной статьи, там в чате обсуждали нужный endpoint
         callAPI: '/api/comment'
     }
 }
